@@ -3,10 +3,12 @@ WORK IN PROGRESS!  The APIs provided by this gem are not yet stable.
 Using CoffeeScript with Rails 3 and Barista?  This gem will eventually
 allow you to run CommonJS-style unit tests from the command line.  For a
 description of the CommonJS assertion API, see
-http://wiki.commonjs.org/wiki/Unit_Testing/1.0#Test.
+http://wiki.commonjs.org/wiki/Unit_Testing/1.0#Test .
 
 Place your tests in either +test/coffeescripts+ or +spec/coffeescripts+,
 and run:
 
     rake barista:test
 
+This gem is heavily based on CoffeeScript's own test harness at
+http://github.com/jashkenas/coffee-script/commits/master/Cakefile .
