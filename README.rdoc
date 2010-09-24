@@ -7,11 +7,6 @@ add the following line to your +Gemfile+:
 
  gem 'barista_test', :git => 'git://github.com/aranetic/barista_test.git'
 
-Next, add the following task to your +Rakefile+:
-
- BaristaTest::RakeTask.new do |spec|
- end
-
 You may now place test files in either <code>test/coffeescripts</code> or
 <code>spec/coffeescripts</code>.  These files should contain assertions as
 described at http://wiki.commonjs.org/wiki/Unit_Testing/1.0#Test .  For
@@ -23,6 +18,16 @@ example:
 To run the unit tests, type:
 
  rake barista:test
+
+== Declaring the Rake tasks manually
+
+If you're not using Rails, you will need to add the following task to your
++Rakefile+ manually:
+
+ require 'barista_test/rake_task'
+
+ BaristaTest::RakeTask.new do |spec|
+ end
 
 == Credits
 
