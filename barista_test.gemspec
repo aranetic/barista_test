@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.version = "0.0.0"
   s.author = "Eric Kidd"
   s.email = "git@randomhacks.net"
-  s.homepage = "http://github.com/emk/barista-test"
+  s.homepage = "http://github.com/aranetic/barista_test"
   s.platform = Gem::Platform::RUBY
   s.summary = "Command-line test runner for use with Barista and CoffeeScript"
   s.require_path = "lib"
