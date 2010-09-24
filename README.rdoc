@@ -1,14 +1,30 @@
-WORK IN PROGRESS!  The APIs provided by this gem are not yet stable.
+THIS IS A REVIEW COPY.  The APIs provided by this gem are still unstable,
+and may change without warning.
 
-Using CoffeeScript with Rails 3 and Barista?  This gem will eventually
-allow you to run CommonJS-style unit tests from the command line.  For a
-description of the CommonJS assertion API, see
-http://wiki.commonjs.org/wiki/Unit_Testing/1.0#Test .
+Are you using CoffeeScript with Rails 3 and Barista?  This gem will allow
+you to run CommonJS-style unit tests from the command line.  To install,
+add the following line to your +Gemfile+:
 
-Place your tests in either +test/coffeescripts+ or +spec/coffeescripts+,
-and run:
+ gem 'barista_test', :git => 'git://github.com/aranetic/barista_test.git'
 
-    rake barista:test
+Next, add the following task to your +Rakefile+:
+
+ BaristaTest::RakeTask.new do |spec|
+ end
+
+You may now place test files in either <code>test/coffeescripts</code> or
+<code>spec/coffeescripts</code>.  These files should contain assertions as
+described at http://wiki.commonjs.org/wiki/Unit_Testing/1.0#Test .  For
+example:
+
+ equal 2, 2, "2 should equal 2"
+ ok true, "This expression should return true"
+
+To run the unit tests, type:
+
+ rake barista:test
+
+== Credits
 
 This gem is heavily based on CoffeeScript's own test harness at
 http://github.com/jashkenas/coffee-script/commits/master/Cakefile .
