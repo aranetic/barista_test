@@ -1,7 +1,7 @@
 # -*- mode: ruby -*-
 
 Gem::Specification.new do |s|
-  s.name = "barista-test"
+  s.name = "barista_test"
   s.version = "0.0.0"
   s.author = "Eric Kidd"
   s.email = "git@randomhacks.net"
