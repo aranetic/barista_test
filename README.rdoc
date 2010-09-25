@@ -10,10 +10,21 @@ add the following line to your +Gemfile+:
 You may now place test files in either <code>test/coffeescripts</code> or
 <code>spec/coffeescripts</code>.  These files should contain assertions as
 described at http://wiki.commonjs.org/wiki/Unit_Testing/1.0#Test .  For
-example:
+example, if you have the following in
+<code>app/coffeescripts/example.coffee</code>:
 
- equal 2, 2, "2 should equal 2"
- ok true, "This expression should return true"
+ # Figure out where to attach our exported functions.  'exports' works in a
+ # CommonJS package, and 'this' works in the browser.
+ root = exports ? this
+ 
+ # The function we want to test.
+ root.add = (x, y) -> x + y
+
+...you can put the following in
+<code>test/coffeescripts/example_test.coffee</code>:
+
+ example = require 'example'
+ equal example.add(2, 3), 5, "example.add should perform addition"
 
 To run the unit tests, type:
 

@@ -7,6 +7,10 @@ helpers = require("coffee-script/helpers").helpers
 # Parse our command-line arguments.
 test_file_paths = process.argv[1...process.argv.length]
 
+# Add app/coffeescripts to our load path.  We should probably make this a
+# command-line argument.
+require.paths.push 'app/coffeescripts'
+
 # ANSI color codes.  Borrowed from
 # http://github.com/jashkenas/coffee-script/blob/master/Cakefile , which
 # implements a test runner for internal use by CoffeeScript.
