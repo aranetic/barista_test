@@ -8,3 +8,7 @@ module BaristaTest
     system "coffee", TEST_RUNNER, "--", "--", *test_paths
   end
 end
+
+# Hook into Rails if it's present.
+require 'barista_test/railtie' if defined?(Rails)
+
