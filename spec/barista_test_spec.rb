@@ -2,7 +2,7 @@ require 'barista_test'
 
 describe BaristaTest do
   def test_file(name)
-    File.join(File.dirname(__FILE__), 'examples', "#{name}.coffee")
+    "spec/examples/vows/#{name}_spec.coffee"
   end
 
   describe ".run_tests" do

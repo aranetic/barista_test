@@ -2,16 +2,26 @@ THIS IS A REVIEW COPY.  The APIs provided by this gem are still unstable,
 and may change without warning.
 
 Are you using CoffeeScript with Rails 3 and Barista?  This gem will allow
-you to run CommonJS-style unit tests from the command line.  To install,
-add the following line to your +Gemfile+:
+you to run unit tests from the command line.  To install, add the following
+line to your +Gemfile+:
 
  gem 'barista_test', :git => 'git://github.com/aranetic/barista_test.git'
 
-You may now place test files in either <code>test/coffeescripts</code> or
-<code>spec/coffeescripts</code>.  These files should contain assertions as
-described at http://wiki.commonjs.org/wiki/Unit_Testing/1.0#Test .  For
-example, if you have the following in
-<code>app/coffeescripts/example.coffee</code>:
+Ultimately, I would like this gem to support multiple testing libraries
+(such as Expresso and Vows.js) and various popular supporting libraries
+(such as sinon and jsdom).  For now, only vows is actually supported.
+
+You will need to install from the following repository for now, until some
+fixes get merged back upstream:
+
+ git clone git://github.com/emk/vows.git
+ cd vows
+ npm install .
+
+Place your test files in <code>spec/coffeescripts</code>.  These files
+should contain ordinary Vows.js suites (though <code>vows</code> and
+<code>assert</code> are already loaded for you).  For example, if you have
+the following in <code>app/coffeescripts/example.coffee</code>:
 
  # Figure out where to attach our exported functions.  'exports' works in a
  # CommonJS package, and 'this' works in the browser.
@@ -24,7 +34,12 @@ example, if you have the following in
 <code>test/coffeescripts/example_test.coffee</code>:
 
  example = require 'example'
- equal example.add(2, 3), 5, "example.add should perform addition"
+ 
+ exports.example_spec = vows.describe("example").addBatch
+   'adding 2 and 3':
+     topic: 2+3,
+     'returns 5': (sum) ->
+       strictEqual 5, sum
 
 To run the unit tests, type:
 
@@ -39,8 +54,3 @@ If you're not using Rails, you will need to add the following task to your
 
  BaristaTest::RakeTask.new do |spec|
  end
-
-== Credits
-
-This gem is heavily based on CoffeeScript's own test harness at
-http://github.com/jashkenas/coffee-script/commits/master/Cakefile .
